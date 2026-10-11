@@ -208,12 +208,55 @@ if (resultsContainer) {
     });
 }
 
+// Mobile Navigation Toggle
+const mobileToggle = document.getElementById('mobile-toggle');
+const navLinks = document.getElementById('nav-links');
+
+if (mobileToggle && navLinks) {
+    mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = navLinks.classList.toggle('active');
+        mobileToggle.classList.toggle('active');
+        mobileToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+            navLinks.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Close mobile menu on resize back to desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024) {
+            navLinks.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
 // Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId !== '#') {
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+                e.preventDefault();
+                targetEl.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+        // Auto-close mobile menu upon selecting a link
+        if (navLinks && mobileToggle) {
+            navLinks.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+        }
     });
 });

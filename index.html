@@ -60,8 +60,10 @@
 
     <header class="cyber-header">
         <nav>
-            <div class="logo"><span class="logo-code">&lt;sahTechies /&gt;</span></div>
-            <ul class="nav-links">
+            <a href="#about" class="logo" aria-label="sahTechies Home">
+                <span class="logo-code">&lt;sahTechies&nbsp;/&gt;</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#about" data-text="01. About">01. About</a></li>
                 <li><a href="#skills" data-text="02. Skills">02. Skills</a></li>
                 <li><a href="#projects" data-text="03. Projects">03. Projects</a></li>
@@ -69,10 +71,17 @@
                 <li><a href="#results" data-text="05. Results">05. Results</a></li>
                 <li><a href="#contact" data-text="06. Contact">06. Contact</a></li>
             </ul>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/sahtechies/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/sahtechies" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://leetcode.com/u/sahTechies/" target="_blank" title="LeetCode"><i class="fas fa-code"></i></a>
+            <div class="nav-right">
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/sahtechies/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/sahtechies" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://leetcode.com/u/sahTechies/" target="_blank" title="LeetCode"><i class="fas fa-code"></i></a>
+                </div>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
             </div>
         </nav>
     </header>
