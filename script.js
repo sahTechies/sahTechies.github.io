@@ -60,49 +60,56 @@ const certificatesData = [
         issuer: "Google / Coursera",
         date: "June 2026",
         file: "https://coursera.org/verify/specialization/LW3V1EMLVGF5",
-        preview: "Certificates/Semistor 3/Google Prompting Essentials Specializations (9-Oct-2026).pdf"
+        pdf: "Certificates/Semistor 3/Google Prompting Essentials Specializations (9-Oct-2026).pdf",
+        preview: "Certificates/previews/google_prompting.png"
     },
     {
         title: "Java OOP: Object Oriented",
         issuer: "Coursera",
         date: "Oct 2026",
         file: "https://coursera.org/verify/FMH4EY36KF76",
-        preview: "Certificates/Semistor 3/Java OOP Object Oriented Programming with Exercises (4-Oct-2026).pdf"
+        pdf: "Certificates/Semistor 3/Java OOP Object Oriented Programming with Exercises (4-Oct-2026).pdf",
+        preview: "Certificates/previews/java_oop.png"
     },
     {
         title: "Getting Started with AI",
         issuer: "IBM SkillsBuild",
         date: "March 2026",
         file: "https://www.credly.com/badges/2398a043-c2e7-4f97-9131-680ee3e67cf4",
-        preview: "Certificates/Semistor 2/Getting Started with Artificial Intelligence-Mar 26, 2026.pdf"
+        pdf: "Certificates/Semistor 2/Getting Started with Artificial Intelligence-Mar 26, 2026.pdf",
+        preview: "Certificates/previews/ibm_ai.png"
     },
     {
         title: "Android App Development",
         issuer: "Udemy",
         date: "Dec 2025",
         file: "https://ude.my/UC-8a1d032c-2daf-4ccc-9048-9fa6cb7ac3bc",
-        preview: "Certificates/Semistor 1/Android App Development - Dec. 12, 2025.pdf"
+        pdf: "Certificates/Semistor 1/Android App Development - Dec. 12, 2025.pdf",
+        preview: "Certificates/previews/udemy_android.png"
     },
     {
         title: "Intro to Complex Analysis",
         issuer: "The Open University",
         date: "May 2026",
         file: "https://www.open.edu/openlearn/science-maths-technology/introduction-complex-analysis/content-section-overview",
-        preview: "Certificates/Semistor 2/Math (differential and integration) 3 may 2026.pdf"
+        pdf: "Certificates/Semistor 2/Math (differential and integration) 3 may 2026.pdf",
+        preview: "Certificates/previews/math_complex_analysis.png"
     },
     {
         title: "Curve Fitting Onramp",
         issuer: "MathWorks",
         date: "March 2026",
         file: "Certificates/Semistor 2/matlab 2026-(Curve Fitting Onramp).pdf",
-        preview: "Certificates/Semistor 2/matlab 2026-(Curve Fitting Onramp).pdf"
+        pdf: "Certificates/Semistor 2/matlab 2026-(Curve Fitting Onramp).pdf",
+        preview: "Certificates/previews/matlab_curve_fitting.png"
     },
     {
         title: "AI Ethics",
         issuer: "DataCamp",
         date: "Oct 2026",
         file: "https://www.datacamp.com/statement-of-accomplishment/course/148e058ad02032e6b83a827476f8f59e6034da76?raw=1",
-        preview: "Certificates/Semistor 3/AI Ethics (DATACAMP)- (3-Oct-2026).pdf"
+        pdf: "Certificates/Semistor 3/AI Ethics (DATACAMP)- (3-Oct-2026).pdf",
+        preview: "Certificates/previews/datacamp_ai_ethics.png"
     }
 ];
 
@@ -157,18 +164,13 @@ projectsData.forEach((project, index) => {
 const certificatesContainer = document.getElementById('certificates-container');
 certificatesData.forEach(cert => {
     const card = document.createElement('a');
-    card.href = cert.file || "#";
+    card.href = cert.file || cert.pdf || "#";
     card.target = "_blank";
     card.className = 'cyber-card cert-gallery-card';
-    
-    const isPdf = cert.preview.toLowerCase().endsWith('.pdf');
-    const previewHtml = isPdf 
-        ? `<embed src="${cert.preview}#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" class="cert-preview-media">`
-        : `<img src="${cert.preview}" alt="${cert.title}" class="cert-preview-media">`;
 
     card.innerHTML = `
         <div class="cert-preview">
-            ${previewHtml}
+            <img src="${cert.preview}" alt="${cert.title}" class="cert-preview-media" loading="lazy">
             <div class="cert-overlay">
                 <i class="fas fa-external-link-alt"></i>&nbsp;Verify
             </div>

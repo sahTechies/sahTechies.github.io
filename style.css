@@ -584,7 +584,13 @@ nav {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    pointer-events: none; /* Prevents scrolling inside PDF */
+    object-position: center top;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.cert-gallery-card:hover .cert-preview-media {
+    transform: scale(1.05);
 }
 
 .cert-overlay {
